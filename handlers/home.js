@@ -5,7 +5,7 @@ const cats = require("../data/cats.json");
 const breeds = require("../data/breeds.json");
 
 let filePath = path.normalize(
-    path.normalize(__dirname, "../views/home/index.js")
+    path.join(__dirname, "../views/home/index.html")
 );
 
 module.exports = (req, res) => {
@@ -25,7 +25,7 @@ module.exports = (req, res) => {
             res.writeHead(200, {
                 "Content-Type": "text/html"
             });
-            res.send(data);
+            res.write(data);
             res.end();
         });
     } else {
