@@ -1,0 +1,25 @@
+{
+  "name": "cat-shelter",
+  "version": "1.0.0",
+  "description": "A very simple cat catalog which shows a database of a cat shelter and everyone can be their potential owner.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mariu6/Cat-Shelter.git"
+  },
+  "keywords": [
+    "cat",
+    "shelter",
+    "home",
+    "new"
+  ],
+  "author": "Mariusz Ilijew",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mariu6/Cat-Shelter/issues"
+  },
+  "homepage": "https://github.com/mariu6/Cat-Shelter#readme"
+}
