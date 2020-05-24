@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/mariu6/Cat-Shelter/issues"
   },
-  "homepage": "https://github.com/mariu6/Cat-Shelter#readme"
+  "homepage": "https://github.com/mariu6/Cat-Shelter#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
