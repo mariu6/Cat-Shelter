@@ -14,6 +14,8 @@ function getContentType(url) {
         return "text/javascript";
     } else if (url.endsWith("json")) {
         return "application/json";
+    } else {
+        return "text/plain";
     }
 }
 

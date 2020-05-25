@@ -22,5 +22,7 @@
     "url": "https://github.com/mariu6/Cat-Shelter/issues"
   },
   "homepage": "https://github.com/mariu6/Cat-Shelter#readme",
-  "dependencies": {}
+  "dependencies": {
+    "formidable": "^1.2.2"
+  }
 }
