@@ -13,6 +13,7 @@ module.exports = (req, res) => {
 
     if (pathname === "/" && req.method === "GET") {
         fs.readFile(filePath, (error, data) => {
+            console.log(pathname);
             if (error) {
                 console.log(error);
                 res.writeHead(404, {
