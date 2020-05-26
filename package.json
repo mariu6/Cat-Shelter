@@ -4,7 +4,8 @@
   "description": "A very simple cat catalog which shows a database of a cat shelter and everyone can be their potential owner.",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start":"nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -24,5 +25,8 @@
   "homepage": "https://github.com/mariu6/Cat-Shelter#readme",
   "dependencies": {
     "formidable": "^1.2.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }
