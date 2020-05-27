@@ -8,6 +8,10 @@
         return "image/png";
     } else if (url.endsWith("jpg")) {
         return "image/jpeg";
+    } else if (url.endsWith("jpeg")) {
+        return "image/jpeg";
+    } else if (url.endsWith("ico")) {
+        return "image/jpeg";
     } else if (url.endsWith("js")) {
         return "text/javascript";
     } else if (url.endsWith("json")) {
