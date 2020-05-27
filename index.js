@@ -10,11 +10,5 @@ http.createServer((req,res) => {
             break;
         }
     }
-    // res.writeHead(200, {
-    //     "Content-Type": "text/plain"
-    // });
-
-    // res.write("Hello JS WORLD!");
-    // res.end();
 }).listen(port);
 
