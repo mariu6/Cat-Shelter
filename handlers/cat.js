@@ -159,7 +159,7 @@ module.exports = (req, res) => {
         input.on("end", () => res.end());
         input.on("error", (err) => console.log(err));
 
-    } else if (pathname.includes("/cats-edit") && req.method === "POST") {     // similiar logic to Add Cat
+    } else if (pathname.includes("/cats-find-new-home") && req.method === "POST") {     // similiar logic to Add Cat
         const catId = Number(pathname.match(/\d+$/g)) - 1;
         // console.log(catId);
         let form = new formidable.IncomingForm();           // form is used for processing various form data 
