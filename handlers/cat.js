@@ -139,17 +139,20 @@ module.exports = (req, res) => {
                 })
             })
         })
+
+
+
+
     } else if (pathname.includes("/cats-find-new-home") && req.method === "GET") {
         let filePath = path.normalize(path.join(__dirname, "../views/catShelter.html"));
         const input = fs.createReadStream(filePath);  
         const currentCat = catsFile[Number(pathname.match(/\d+$/g)) - 1];
-        console.log(currentCat);
         input.on("data", (data) => {
-            console.log(currentCat.name + "     " + currentCat.id);
             let modifiedData = data.toString().replace('{{id}}', currentCat.id);
-            modifiedData = modifiedData.toString().replace('{{name}}', currentCat.name);
+            modifiedData = modifiedData.toString().replace('{{name}}', currentCat.name);     // technical dept: once for the alt
+            modifiedData = modifiedData.toString().replace('{{name}}', currentCat.name);     // twice for the name   
             modifiedData = modifiedData.toString().replace('{{description}}', currentCat.description);
-            modifiedData = modifiedData.toString().replace('{{image}}', currentCat.image);
+            modifiedData = modifiedData.toString().replace('{{image}}', path.join('../content/images/' + currentCat.image));
             const breedsAsOptions = breedsFile.map((b) => `<option value="${b}">${b}</option>`);
             modifiedData = modifiedData.replace("{{catBreeds}}", breedsAsOptions.join("/"));
 
@@ -161,39 +164,8 @@ module.exports = (req, res) => {
 
     } else if (pathname.includes("/cats-find-new-home") && req.method === "POST") {     // similiar logic to Add Cat
         const catId = Number(pathname.match(/\d+$/g)) - 1;
-        // console.log(catId);
-        let form = new formidable.IncomingForm();           // form is used for processing various form data 
-
-        form.parse(req, (err, fields, files) => {           // fields - passing info from form fields, files - from preset formidable
-            if (err) throw err;
-            let filesUploadName;
-            if (!!files.upload.name) {          // check if during edit there is a new picture file. If not - it will be empty
-                // move of the uploaded file (in this case - picture)
-                let oldPath = files.upload.path;                         // taking them from the default formidable folder
-                let newPath = path.normalize(path.join(__dirname, "../content/images/" + files.upload.name));  // creating new path in my folder
-                fs.rename(oldPath, newPath, (err) => {                   // transfer     
-                    if (err) throw err;
-                    console.log("Files was uploaded sccessfully!");
-                });
-                filesUploadName = files.upload.name;
-            } else {
-                filesUploadName = undefined;
-            }
-
-            // Add new object to cats.json
-            fs.readFile("./data/cats.json", "utf-8", (err, data) => {
-                if (err) throw err;
-                let allCats = JSON.parse(data);                         // parsing to array of objects
-                console.log(allCats);
-                console.log(fields);
-                allCats[catId] = { id: catId + 1, ...fields, image: filesUploadName };   // constructing and replacing the object
-                let json = JSON.stringify(allCats);                     // set back to JSON
-                fs.writeFile("./data/cats.json", json, () => {          // rewrite the original file with the new cat info
-                    res.writeHead(301, { location: "/" });              // redirect
-                    res.end();
-                })
-            })
-        })
+        console.log(catId);
+        
 
     } else {
         return true;
