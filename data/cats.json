@@ -1,1 +1,23 @@
-[]
+[
+    {
+        "id": 1,
+        "name": "01 Cat",
+        "description": "01 first Cat ",
+        "breed": "Angora",
+        "image": "IMG_20200403_115727.jpg"
+    },
+    {
+        "id": 2,
+        "name": "02 Another catxcvbcxvb",
+        "description": "02 fat cat ccvb",
+        "breed": "Birman",
+        "image": "IMG_20200404_120655.jpg"
+    },
+    {
+        "id": 3,
+        "name": "03 cat",
+        "description": "treta",
+        "breed": "Unconwn breed",
+        "image": "IMG_20200404_120828.jpg"
+    }
+]
