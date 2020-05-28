@@ -1,23 +1,42 @@
 [
     {
         "id": 1,
-        "name": "01 Cat",
-        "description": "01 first Cat ",
+        "name": "Mariah",
+        "description": "Incredibly loving cat with kind habits and tiny voice. Love hugs and wool balls.",
         "breed": "Angora",
-        "image": "IMG_20200403_115727.jpg"
+        "image": "angora.jpg",
+        "taken": false
     },
     {
         "id": 2,
-        "name": "02 Another catxcvbcxvb",
-        "description": "02 fat cat ccvb",
-        "breed": "Birman",
-        "image": "IMG_20200404_120655.jpg"
+        "name": "Tom",
+        "description": "Joyfull and funny kitty, a potential best friend.",
+        "breed": "Bengal",
+        "image": "bengal.jpg",
+        "taken": false
     },
     {
         "id": 3,
-        "name": "03 cat",
-        "description": "treta",
-        "breed": "Unconwn breed",
-        "image": "IMG_20200404_120828.jpg"
+        "name": "Amica",
+        "description": "Wherever she goes, love follows! Kind and warm cat, a good child care tender",
+        "breed": "Chartreux",
+        "image": "chartreux.jpg",
+        "taken": false
+    },
+    {
+        "id": 4,
+        "name": "Savana",
+        "description": "Empty cat, needs to be filled with love!",
+        "breed": "Havana",
+        "image": "havana.jpg",
+        "taken": false
+    },
+    {
+        "id": 5,
+        "name": "Einstein",
+        "description": "This cat is clever as a hive of rabbits!",
+        "breed": "Persian Cat",
+        "image": "persian.jpeg",
+        "taken": false
     }
 ]

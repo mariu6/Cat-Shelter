@@ -26,16 +26,20 @@ module.exports = (req, res) => {
                 "Content-Type": "text/html"
             });
 
-            let modifiedCats = cats.map((cat) => `<li>
-                <img src="${path.join('./content/images/' + cat.image)}" alt="${cat.name}">
-                <h3>${cat.name}</h3>
-                <p><span>Breed: </span>${cat.breed}</p>
-                <p><span>Description: </span>${cat.description}</p>
-                <ul class="buttons">
-                    <li class="btn edit"><a href="/cats-edit/${cat.id}">Change Info</a></li>
-                    <li class="btn delete"><a href="/cats-find-new-home/${cat.id}">New Home</a></li>
-                </ul>
-            </li>`).join("");
+            let modifiedCats = cats.reduce((a, cat) => {
+                if (cat.taken === false) {
+                    return a + `<li>
+                    <img src="${path.join('./content/images/' + cat.image)}" alt="${cat.name}">
+                    <h3>${cat.name}</h3>
+                    <p><span>Breed: </span>${cat.breed}</p>
+                    <p><span>Description: </span>${cat.description}</p>
+                    <ul class="buttons">
+                        <li class="btn edit"><a href="/cats-edit/${cat.id}">Change Info</a></li>
+                        <li class="btn delete"><a href="/cats-find-new-home/${cat.id}">New Home</a></li>
+                    </ul>
+                </li>`}
+                return a;
+            }, "");
             let modifiedData = data.toString().replace('{{cats}}', modifiedCats);
             res.write(modifiedData);
             res.end();

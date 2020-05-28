@@ -75,7 +75,7 @@ module.exports = (req, res) => {
             fs.readFile("./data/cats.json", "utf-8", (err, data) => {
                 if (err) throw err;
                 let allCats = JSON.parse(data);                         // parsing to array of objects
-                allCats.push({ id: catsFile.length + 1, ...fields, image: files.upload.name });   // constructing and adding the new object
+                allCats.push({ id: catsFile.length + 1, ...fields, image: files.upload.name, taken: false });   // constructing and adding the new object
                 let json = JSON.stringify(allCats);                     // set back to JSON
                 fs.writeFile("./data/cats.json", json, () => {          // rewrite the original file with the new cat info
                     res.writeHead(301, { location: "/" });              // redirect
@@ -141,12 +141,12 @@ module.exports = (req, res) => {
         })
 
 
-        
+
 
 
     } else if (pathname.includes("/cats-find-new-home") && req.method === "GET") {
         let filePath = path.normalize(path.join(__dirname, "../views/catShelter.html"));
-        const input = fs.createReadStream(filePath);  
+        const input = fs.createReadStream(filePath);
         const currentCat = catsFile[Number(pathname.match(/\d+$/g)) - 1];
         input.on("data", (data) => {
             let modifiedData = data.toString().replace('{{id}}', currentCat.id);
@@ -166,7 +166,19 @@ module.exports = (req, res) => {
     } else if (pathname.includes("/cats-find-new-home") && req.method === "POST") {     // similiar logic to Add Cat
         const catId = Number(pathname.match(/\d+$/g)) - 1;
         console.log(catId);
-        
+        fs.readFile("./data/cats.json", "utf-8", (err, data) => {
+            if (err) throw err;
+            let allCats = JSON.parse(data);                         // parsing to array of objects
+            console.log(allCats[catId].taken);
+            allCats[catId].taken = true;                             
+            let json = JSON.stringify(allCats);                     // set back to JSON
+            console.log(allCats[catId].taken);
+            fs.writeFile("./data/cats.json", json, () => {          // rewrite the original file with the new cat info
+                res.writeHead(301, { location: "/" });              // redirect
+                res.end();
+            })
+        })
+
 
     } else {
         return true;
