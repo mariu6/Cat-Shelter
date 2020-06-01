@@ -170,7 +170,7 @@ module.exports = (req, res) => {
             if (err) throw err;
             let allCats = JSON.parse(data);                         // parsing to array of objects
             console.log(allCats[catId].taken);
-            allCats[catId].taken = true;                             
+            allCats[catId].taken = true;
             let json = JSON.stringify(allCats);                     // set back to JSON
             console.log(allCats[catId].taken);
             fs.writeFile("./data/cats.json", json, () => {          // rewrite the original file with the new cat info
@@ -178,8 +178,6 @@ module.exports = (req, res) => {
                 res.end();
             })
         })
-
-
     } else {
         return true;
     }
